@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,10 +17,20 @@ namespace WatchStore.Models
             // Add custom user claims here
             return userIdentity;
         }
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "You must enter first name")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "First name must be between 3 and 50 char length")]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "You must enter last name")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Last name must be between 3 and 50 char length")]
+        public string LastName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Products> Products { get; set; }
+        public DbSet<Brand> Brands { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

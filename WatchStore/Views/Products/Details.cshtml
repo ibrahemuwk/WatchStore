@@ -1,0 +1,96 @@
+﻿@model WatchStore.Models.Products
+
+@{
+    ViewBag.Title = "Details";
+}
+<div style="margin-top: 100px;"></div>
+
+
+
+<div class="container">
+    <h2>Details</h2>
+   <br/>
+
+    <table class="table-striped table-bordered table-responsive text-center" style="height: 100%;width: 100%">
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Brand.Name)
+            </td>
+            <td>
+                @ViewBag.BrandName
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.ProductName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ProductDescription)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </td>
+            <td>
+                <img class="img-rounded" style="height: 50px" src="@Url.Action("UserPhotos", "Home",new{id=Model.ProductId} )" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ProductPrice)
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                @Html.DisplayNameFor(model => model.ProductDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ProductDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                @Html.DisplayNameFor(model => model.ProductSale)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ProductSale)
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ProductQuantity)
+            </td>
+        </tr>
+
+
+    </table>
+    <br /><br />
+
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { @class = "btn btn-danger  btn-link", id = Model.ProductId }) &ensp;
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-danger  btn-link" })
+    </p>
+</div>
