@@ -140,7 +140,7 @@ ul, li {
 /* ------------------------------------ */
 input {
 	outline: none;
-	border: none !important;
+	
 }
 
 textarea {
@@ -1642,7 +1642,7 @@ li.sale-noti > a {
 {
   z-index: 100;
   font-family: Montserrat-Regular;
-  font-size: 12px;
+  
   color: white;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1655,8 +1655,7 @@ li.sale-noti > a {
   height: 22px;
   border-radius: 11px;
   position: absolute;
-  top: 12px;
-  left: 12px;
+  
 }
 
 .block2-labelsale::before {

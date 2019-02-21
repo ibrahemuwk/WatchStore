@@ -31,23 +31,30 @@
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/vendor/slick/slick.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/vendor/lightbox2/css/lightbox.min.css">
+    <link href="~/Content/DesignContent/vendor/noui/nouislider.min.css" rel="stylesheet" />
     <!--DataTable =============================================================================-->
 
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/css/util.css">
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/css/main.css">
-
+    <style>
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+    </style>
     <!--===============================================================================================-->
 </head>
 <body class="animsition">
 
     <!-- Header -->
-    <header class="header1">
+    <header class="header1" >
         <!-- Header desktop -->
         <div class="container-menu-header">
 
 
-            <div class="wrap_header">
+            <div class="wrap_header" id="navbar">
                 <!-- Logo -->
                 <a href="/" class="logo">
                     <img src="../../Content/DesignContent/images/icons/logo.png" alt="IMG-LOGO">
@@ -68,7 +75,7 @@
 
 
                             <li>
-                                <a href="#">Features</a>
+                                <a href="/Home/Galary">Products</a>
                             </li>
 
                             <li>
@@ -89,6 +96,10 @@
                                 {
                                     <li>
                                         <a href="/Products/Index">ADMIN</a>
+                                        <ul class="sub_menu">
+                                            <li><a href="/Products/Index">Products management</a></li>
+                                            <li><a href="/Brands/Index">Brands Management</a></li>
+                                        </ul>
                                     </li>
                                 }
                             }
@@ -334,7 +345,7 @@
             </nav>
         </div>
     </header>
-
+    <div style="margin-top: 80px"></div>
     @RenderBody()
 
     <!-- Footer -->
@@ -492,8 +503,9 @@
         </span>
     </div>
 
-    <!-- Container Selection1 -->
-    <div id="dropDownSelect1"></div>
+<!-- Container Selection -->
+<div id="dropDownSelect1"></div>
+<div id="dropDownSelect2"></div>
 
 
 
@@ -506,12 +518,17 @@
     <script type="text/javascript" src="../../Content/DesignContent/vendor/bootstrap/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="../../Content/DesignContent/vendor/select2/select2.min.js"></script>
-    <script type="text/javascript">
-        $(".selection-1").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect1')
-        });
-    </script>
+<script type="text/javascript">
+    $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect2')
+    });
+</script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="../../Content/DesignContent/vendor/slick/slick.min.js"></script>
     <script type="text/javascript" src="../../Content/DesignContent/js/slick-custom.js"></script>
@@ -529,25 +546,104 @@
     <script type="text/javascript">
         $('.block2-btn-addcart').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function () {
-                swal(nameProduct, "is added to cart !", "success");
-            });
+            var Id = $(this).parent().parent().parent().find('.block2-id').html();
+            var authorized = $(this).parent().parent().parent().find('.block2-auth').html();
+            if (authorized ==="True") {
+                $(this).on('click', function () {
+                    swal({
+                        title: "Are you sure?",
+                        text: "You want to add to cart",
+                        icon: "warning",
+                        buttons: {
+                            cancel: true,
+                            confirm: "Add"
+                            
+                            }
+                    }).then(function (isConfirm) {
+                        if (isConfirm) {
+                            swal("Added!", "Your item has been added.", "success");
+                        } else {
+                            swal("Cancelled", "You cancel the item", "error");
+                        }
+                        });
+                       
+                    //swal(nameProduct + " and id is " + Id, "is added to cart !", "success");
+                });
+            } else {
+                $(this).on('click', function () {
+                   
+                    swal({
+                        title: "Login",
+                        text: "You Must login first ",
+                        icon: "info",
+                        buttons: {
+                            
+                            confirm: "Login"
+                            
+                        }
+                        
+                        
+                    }).then(function (isConfirm) {
+                        if (isConfirm) {
+                            location.href = "/Account/Login?ReturnUrl=%2FHome%2FGalary";
+                        }
+                        
+                    });
+                    //function () {
+                    //    ///Account/Login?ReturnUrl=%2FHome%2FGalary
+                    //    //location.href = "/Account/Login?ReturnUrl=%2FHome%2FGalary";
+                    //    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    //});
+                });
+            }
+            
         });
 
-        $('.block2-btn-addwishlist').each(function () {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function () {
-                swal(nameProduct, "is added to wishlist !", "success");
-            });
-        });
+       
         $(function() {
 
             $('#Products').DataTable();
             $('#example1').DataTable();
-        })
+        });
+        window.onscroll = function() {myFunction()};
+
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
     </script>
 
-    <!--===============================================================================================-->
+<!--===============================================================================================-->
+<script src="~/Content/DesignContent/vendor/noui/nouislider.min.js"></script>
+<script type="text/javascript">
+    /*[ No ui ]
+	    ===========================================================*/
+    var filterBar = document.getElementById('filter-bar');
+
+    noUiSlider.create(filterBar, {
+        start: [ 10, 2000 ],
+        connect: true,
+        range: {
+            'min': 10,
+            'max': 2000
+        }
+    });
+
+    var skipValues = [
+        document.getElementById('value-lower'),
+        document.getElementById('value-upper')
+    ];
+
+    filterBar.noUiSlider.on('update', function( values, handle ) {
+        skipValues[handle].innerHTML = Math.round(values[handle]) ;
+    });
+</script>
     <script src="../../Content/DesignContent/js/main.js"></script>
     @RenderSection("scripts", required: false)
 </body>

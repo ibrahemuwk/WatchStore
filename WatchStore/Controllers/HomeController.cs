@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -55,6 +56,14 @@ namespace WatchStore.Controllers
                     imageData = br.ReadBytes((int)imageFileLength);
                     return File(imageData, "image/png");
             }
+        }
+       
+        public ActionResult Galary()
+        {
+        ApplicationDbContext db = new ApplicationDbContext();
+        var products = db.Products.Include(p => p.Brand);
+
+            return View(products.ToList());
         }
     }
 }
