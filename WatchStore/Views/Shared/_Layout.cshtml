@@ -43,6 +43,38 @@
             top: 0;
             width: 100%;
         }
+        .pagination__controls {
+            margin-right: -6px;
+            margin-left: 10px;
+            position: absolute;
+            bottom: 0;
+        }
+        .pagination li.active{
+            background-color: #222222;
+            color: white;
+        }
+        .pagination__controls li {
+            font-family: Montserrat-Regular;
+            font-size: 13px;
+            color: #808080;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #eeeeee;
+            margin: 6px;
+            display: flex;
+            justify-content: center;
+            -ms-align-items: center;
+            align-items: center;
+        }
+            .pagination__controls li:hover {
+                background-color: #222222;
+                color: white;
+            }
+            .pagination__controls li .active {
+                background-color: #222222;
+                color: white;
+            }
     </style>
     <!--===============================================================================================-->
 </head>
@@ -600,11 +632,7 @@
         });
 
        
-        $(function() {
-
-            $('#Products').DataTable();
-            $('#example1').DataTable();
-        });
+       
         window.onscroll = function() {myFunction()};
 
         var navbar = document.getElementById("navbar");
@@ -644,7 +672,14 @@
         skipValues[handle].innerHTML = Math.round(values[handle]) ;
     });
 </script>
-    <script src="../../Content/DesignContent/js/main.js"></script>
+<script src="../../Content/DesignContent/js/main.js"></script>
+<script src="~/Content/DesignContent/vendor/jPaginate/src/jQuery.paginate.js"></script>
+<script>
+   
+    $('.selection-2').on('change', function() {
+        alert( $(this).find(":selected").val() );
+    });
+</script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

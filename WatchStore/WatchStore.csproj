@@ -2793,6 +2793,10 @@
     <Content Include="Content\DesignContent\vendor\daterangepicker\moment.js" />
     <Content Include="Content\DesignContent\vendor\daterangepicker\moment.min.js" />
     <Content Include="Content\DesignContent\vendor\isotope\isotope.pkgd.min.js" />
+    <Content Include="Content\DesignContent\vendor\jPaginate\dist\jQuery.paginate.min.js" />
+    <Content Include="Content\DesignContent\vendor\jPaginate\samples\css\main.css" />
+    <Content Include="Content\DesignContent\vendor\jPaginate\samples\index.html" />
+    <Content Include="Content\DesignContent\vendor\jPaginate\src\jQuery.paginate.js" />
     <Content Include="Content\DesignContent\vendor\jqueryui\external\jquery\jquery.js" />
     <Content Include="Content\DesignContent\vendor\jqueryui\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\DesignContent\vendor\jqueryui\images\ui-icons_555555_256x240.png" />
@@ -2810,6 +2814,7 @@
     <Content Include="Content\DesignContent\vendor\jqueryui\jquery-ui.theme.css" />
     <Content Include="Content\DesignContent\vendor\jqueryui\jquery-ui.theme.min.css" />
     <Content Include="Content\DesignContent\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\DesignContent\vendor\jquery\jquery.min.js" />
     <Content Include="Content\DesignContent\vendor\lightbox2\css\lightbox.css" />
     <Content Include="Content\DesignContent\vendor\lightbox2\css\lightbox.min.css" />
     <Content Include="Content\DesignContent\vendor\lightbox2\images\close.png" />
