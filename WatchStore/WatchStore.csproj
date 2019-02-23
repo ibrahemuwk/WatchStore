@@ -177,6 +177,7 @@
     <Compile Include="Controllers\BrandsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,11 +206,16 @@
     <Compile Include="Migrations\201902191650386_Dateformate.Designer.cs">
       <DependentUpon>201902191650386_Dateformate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902231129301_AddOrderTable.cs" />
+    <Compile Include="Migrations\201902231129301_AddOrderTable.Designer.cs">
+      <DependentUpon>201902231129301_AddOrderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -3021,6 +3027,7 @@
     <Content Include="Views\Brands\Edit.cshtml" />
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Home\Galary.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3056,6 +3063,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902191650386_Dateformate.resx">
       <DependentUpon>201902191650386_Dateformate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902231129301_AddOrderTable.resx">
+      <DependentUpon>201902231129301_AddOrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

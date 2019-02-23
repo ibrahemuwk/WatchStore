@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>WatchMan</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -75,6 +75,7 @@
                 background-color: #222222;
                 color: white;
             }
+
     </style>
     <!--===============================================================================================-->
 </head>
@@ -101,17 +102,14 @@
 
                             </li>
 
-                            <li>
-                                <a href="#">Shop</a>
-                            </li>
-
+                           
 
                             <li>
                                 <a href="/Home/Galary">Products</a>
                             </li>
 
                             <li>
-                                <a href="#">Blog</a>
+                                <a href="/Order/Index">Cart</a>
                             </li>
 
                             <li>
@@ -208,7 +206,7 @@
                             <div class="header-cart-buttons">
                                 <div class="header-cart-wrapbtn">
                                     <!-- Button -->
-                                    <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    <a href="/Order/Index" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                         View Cart
                                     </a>
                                 </div>
@@ -307,7 +305,7 @@
                             <div class="header-cart-buttons">
                                 <div class="header-cart-wrapbtn">
                                     <!-- Button -->
-                                    <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    <a href="/Order/Index" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                         View Cart
                                     </a>
                                 </div>
@@ -343,17 +341,14 @@
 
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="#">Shop</a>
+                    
+                    <li  class="item-menu-mobile">
+                        <a href="/Home/Galary">Products</a>
                     </li>
-
-
-                    <li class="item-menu-mobile">
-                        <a href="#">Features</a>
-                    </li>
+                    
 
                     <li class="item-menu-mobile">
-                        <a href="#">Blog</a>
+                        <a href="/Order/Index">Cart</a>
                     </li>
 
                     <li class="item-menu-mobile">
@@ -578,7 +573,7 @@
     <script type="text/javascript">
         $('.block2-btn-addcart').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            var Id = $(this).parent().parent().parent().find('.block2-id').html();
+            var id = $(this).parent().parent().parent().find('.block2-id').html();
             var authorized = $(this).parent().parent().parent().find('.block2-auth').html();
             if (authorized ==="True") {
                 $(this).on('click', function () {
@@ -593,7 +588,21 @@
                             }
                     }).then(function (isConfirm) {
                         if (isConfirm) {
-                            swal("Added!", "Your item has been added.", "success");
+
+                            $.ajax({
+                                url: '/Order/AddOrder',
+                                type: "POST",
+                                data: {
+                                    id: id
+                                },
+                                error:function() {
+                                    swal("Failed", "Something went wrong", "error");
+                                }
+                            }).success(function () {
+                                swal("Added!", "Your item has been added.", "success");
+                                });
+
+                            
                         } else {
                             swal("Cancelled", "You cancel the item", "error");
                         }

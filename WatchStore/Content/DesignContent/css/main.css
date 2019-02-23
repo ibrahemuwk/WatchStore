@@ -2129,29 +2129,10 @@ li.sale-noti > a {
   width: 100%;
 }
 
-.cart-img-product::after {
-  content: '\e870';
-  font-family: Linearicons;
-  font-size: 16px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  opacity: 0;
+.cart-img-product:hover {
+  
+    
+  
 }
 
 .cart-img-product:hover:after {
@@ -2346,3 +2327,29 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 
+
+.tools > .fa,
+.tools > .glyphicon,
+.tools > .ion {
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 2em
+}
+
+    .tools :hover {
+        color: #dd4b39
+    }
+
+@media only screen and (max-width: 992px) {
+
+    .imaProduct {
+        height: 200px !important;
+        width: auto !important;
+    }
+
+    .display-name {
+        display: -webkit-inline-box !important;
+    }
+}
+
+    .display-name { display: none }

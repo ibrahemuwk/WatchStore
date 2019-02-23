@@ -7,8 +7,8 @@
 
 <div class="header-wrapicon1 dis-block">
 
-    <img src="../../Content/DesignContent/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-    <span>
+    <a href="/Manage/Index"><img src="../../Content/DesignContent/images/icons/icon-header-01.png" class="header-icon1" alt="ICON"></a>
+    <span class="display-name">
         @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
     </span>
     &ensp;
