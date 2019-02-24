@@ -197,8 +197,10 @@
                                 var total = $('#total').text();
                                 total -= price;
                                 $('#total').text(total);
-
                                 $(td).parent().parent().fadeOut(1000);
+                                var count = parseInt($('.header-icons-noti').html());
+                                count -= 1;
+                                $('.header-icons-noti').text(count);
                             }
                         });
 

@@ -43,8 +43,10 @@
 
     /*[ Show header dropdown ]
     ===========================================================*/
-    $('.js-show-header-dropdown').on('click', function(){
-        $(this).parent().find('.header-dropdown')
+    $('.js-show-header-dropdown').on('click', function() {
+        $(this).parent().find('.header-dropdown');
+        
+         
     });
 
     var menu = $('.js-show-header-dropdown');

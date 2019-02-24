@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -73,6 +74,30 @@ namespace WatchStore.Controllers
             var product = db.Products.FirstOrDefault(x => x.ProductId == id);
             ViewBag.BrandName = db.Brands.Find(product.BrandId)?.Name;
             return View(product);
+        }
+
+        //public ActionResult MiniCartget()
+        //{
+        //    var db = new ApplicationDbContext();
+        //    var userId = User.Identity.GetUserId();
+        //    var products = new List<Products>();
+        //    var userProducts = db.Orders.Where(x => x.UserId == userId).ToList();
+        //    if (userProducts != null || userProducts.Count > 0)
+        //    {
+        //        foreach (var item in userProducts)
+        //        {
+        //            products.Add(db.Products.SingleOrDefault(x => x.ProductId == item.ProductId));
+        //        }
+        //    }
+        //    return PartialView("MiniCart", products);
+        //}
+       
+        public ActionResult MiniCart()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var userId = User.Identity.GetUserId();
+            ViewBag.cartNum = db.Orders.Where(x=>x.UserId==userId).Count();
+            return PartialView();
         }
     }
 }

@@ -96,10 +96,10 @@
                                            
                                                 <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
                                             
-                                                <a href="/Home/ProductDetail/@item.ProductId">
-                                                    <div class="block2-overlay trans-0-4">
+                                               
+                                                <div class="block2-overlay trans-0-4">
 
-
+                                                    <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
                                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                                             <!-- Button -->
                                                             <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -107,9 +107,9 @@
                                                             </button>
 
                                                         </div>
-
-                                                    </div>
-                                                </a>
+                                                    
+                                                </div>
+                                                
                                         </div>
 
                                         <div class="block2-txt p-t-20">
@@ -144,16 +144,18 @@
                                         <div class="block2-img wrap-pic-w of-hidden pos-relative">
 
                                             <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
-                                            <a href="/Home/ProductDetail/@item.ProductId">
-                                                <div class="block2-overlay trans-0-4">
-                                                    <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                        <!-- Button -->
-                                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                            Add to Cart
-                                                        </button>
-                                                    </div>
+                                            
+                                            <div class="block2-overlay trans-0-4">
+                                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+
+                                                <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                    <!-- Button -->
+                                                    <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                        Add to Cart
+                                                    </button>
                                                 </div>
-                                            </a>
+                                            </div>
+                                            
                                         </div>
 
                                         <div class="block2-txt p-t-20">
@@ -204,6 +206,29 @@
         });
 
        
+    </script>
+    <script type="text/javascript">
+        /*[ No ui ]
+	    ===========================================================*/
+        var filterBar = document.getElementById('filter-bar');
+
+        noUiSlider.create(filterBar, {
+            start: [ 10, 2000 ],
+            connect: true,
+            range: {
+                'min': 10,
+                'max': 2000
+            }
+        });
+
+        var skipValues = [
+            document.getElementById('value-lower'),
+            document.getElementById('value-upper')
+        ];
+
+        filterBar.noUiSlider.on('update', function( values, handle ) {
+            skipValues[handle].innerHTML = Math.round(values[handle]) ;
+        });
     </script>
 }
 

@@ -142,93 +142,18 @@
                     @Html.Partial("_LoginPartial")
 
                     <span class="linedivide1"></span>
-
-                    <div class="header-wrapicon2">
-                        <img src="../../Content/DesignContent/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                        <span class="header-icons-noti">0</span>
-
-                        <!-- Header cart noti -->
-                        <div class="header-cart header-dropdown">
-                            <ul class="header-cart-wrapitem">
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-01.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            White Shirt With Pleat Detail Back
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $19.00
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-02.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            Converse All Star Hi Black Canvas
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $39.00
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-03.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            Nixon Porter Leather Watch In Tan
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $17.00
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="header-cart-total">
-                                Total: $75.00
-                            </div>
-
-                            <div class="header-cart-buttons">
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
-                                    <a href="/Order/Index" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                        View Cart
-                                    </a>
-                                </div>
-
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
-                                    <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                        Check Out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Header cart noti end -->
-
-                    </div>
+                   
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.Action("MiniCart", "Home")
+                    }
+                    
                 </div>
             </div>
         </div>
 
         <!-- Header Mobile -->
-        <div class="wrap_header_mobile">
+        <div class="wrap_header_mobile" ">
             <!-- Logo moblie -->
             <a href="/" class="logo-mobile">
                 <img src="../../Content/DesignContent/images/icons/logo.png" alt="IMG-LOGO">
@@ -241,86 +166,10 @@
                     @Html.Partial("_LoginPartial")
 
                     <span class="linedivide2"></span>
-
-                    <div class="header-wrapicon2">
-                        <img src="../../Content/DesignContent/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                        <span class="header-icons-noti">0</span>
-
-                        <!-- Header cart noti -->
-                        <div class="header-cart header-dropdown">
-                            <ul class="header-cart-wrapitem">
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-01.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            White Shirt With Pleat Detail Back
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $19.00
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-02.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            Converse All Star Hi Black Canvas
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $39.00
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <li class="header-cart-item">
-                                    <div class="header-cart-item-img">
-                                        <img src="../../Content/DesignContent/images/item-cart-03.jpg" alt="IMG">
-                                    </div>
-
-                                    <div class="header-cart-item-txt">
-                                        <a href="#" class="header-cart-item-name">
-                                            Nixon Porter Leather Watch In Tan
-                                        </a>
-
-                                        <span class="header-cart-item-info">
-                                            1 x $17.00
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="header-cart-total">
-                                Total: $75.00
-                            </div>
-
-                            <div class="header-cart-buttons">
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
-                                    <a href="/Order/Index" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                        View Cart
-                                    </a>
-                                </div>
-
-                                <div class="header-cart-wrapbtn">
-                                    <!-- Button -->
-                                    <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                        Check Out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Header cart noti end -->
-
-                    </div>
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.Action("MiniCart", "Home")
+                }
                 </div>
 
                 <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -600,7 +449,10 @@
                                 }
                             }).success(function () {
                                 swal("Added!", "Your item has been added.", "success");
-                                });
+                                var count = parseInt($('.header-icons-noti').html());
+                                count+=1;
+                                $('.header-icons-noti').text(count);
+                            });
 
                             
                         } else {
@@ -646,6 +498,7 @@
 
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
+       
 
         function myFunction() {
             if (window.pageYOffset >= sticky) {
@@ -654,33 +507,13 @@
                 navbar.classList.remove("sticky");
             }
         }
+
+       
     </script>
 
 <!--===============================================================================================-->
 <script src="~/Content/DesignContent/vendor/noui/nouislider.min.js"></script>
-<script type="text/javascript">
-    /*[ No ui ]
-	    ===========================================================*/
-    var filterBar = document.getElementById('filter-bar');
 
-    noUiSlider.create(filterBar, {
-        start: [ 10, 2000 ],
-        connect: true,
-        range: {
-            'min': 10,
-            'max': 2000
-        }
-    });
-
-    var skipValues = [
-        document.getElementById('value-lower'),
-        document.getElementById('value-upper')
-    ];
-
-    filterBar.noUiSlider.on('update', function( values, handle ) {
-        skipValues[handle].innerHTML = Math.round(values[handle]) ;
-    });
-</script>
 <script src="../../Content/DesignContent/js/main.js"></script>
 <script src="~/Content/DesignContent/vendor/jPaginate/src/jQuery.paginate.js"></script>
 <script>
