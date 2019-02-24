@@ -65,5 +65,14 @@ namespace WatchStore.Controllers
 
             return View(products.ToList());
         }
+
+        public ActionResult ProductDetail(int id)
+        {
+            ApplicationDbContext db=new ApplicationDbContext();
+
+            var product = db.Products.FirstOrDefault(x => x.ProductId == id);
+            ViewBag.BrandName = db.Brands.Find(product.BrandId)?.Name;
+            return View(product);
+        }
     }
 }

@@ -3028,6 +3028,7 @@
     <Content Include="Views\Brands\Index.cshtml" />
     <Content Include="Views\Home\Galary.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
