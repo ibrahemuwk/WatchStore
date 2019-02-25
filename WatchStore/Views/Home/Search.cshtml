@@ -1,0 +1,110 @@
+﻿@model IEnumerable<WatchStore.Models.Products>
+<div id="searchresults">
+    <div id="pagination-2"  class="row pagination__list">
+        @foreach (var item in Model)
+        {
+            if (item.ProductSale > 0)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
+                    <!-- Block2 -->
+                    <div class="block2 border" style="padding: 10px;min-width: 200px;">
+                        <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+
+                            <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+
+
+                            <div class="block2-overlay trans-0-4">
+
+                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+                                <div class="block2-btn-addcart w-size1 trans-0-4">
+                                    <!-- Button -->
+                                    <button onclick="cartClick(this)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        Add to Cart
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="block2-txt p-t-20">
+                            <a href="#" class=" dis-block s-text3 p-b-5">
+                                <b class="font-weight-bold ">@item.Brand.Name</b>
+                                <span class="block2-name">@item.ProductName</span>
+                                <span class="block2-id" hidden="">@item.ProductId</span>
+                                <span class="block2-auth" hidden="">@Request.IsAuthenticated</span>
+                            </a>
+
+
+                            <span class="block2-oldprice m-text7 p-r-5">
+                                $@item.ProductPrice
+                            </span>
+
+                            <span class="block2-newprice m-text8 p-r-5">
+                                @{
+                                    var sale = item.ProductPrice * (item.ProductSale / 100);
+                                    var price = item.ProductPrice - sale;
+                                }
+                                $@Math.Round(price, 2)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
+                    <!-- Block2 -->
+                    <div class="block2 border" style="padding: 10px;min-width: 200px;">
+                        <div class="block2-img wrap-pic-w of-hidden pos-relative">
+
+                            <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+
+                            <div class="block2-overlay trans-0-4">
+                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+
+                                <div class="block2-btn-addcart w-size1 trans-0-4">
+                                    <!-- Button -->
+                                    <button onclick="cartClick(this)" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="block2-txt p-t-20">
+                            <a href="#" class=" dis-block s-text3 p-b-5">
+                                <b class="font-weight-bold ">@item.Brand.Name</b>
+                                <span class="block2-name">@item.ProductName</span>
+                                <span class="block2-id" hidden="">@item.ProductId</span>
+                                <span class="block2-auth" hidden="">@Request.IsAuthenticated</span>
+                            </a>
+
+                            <span class="block2-price m-text6 p-r-5">
+                                $@item.ProductPrice
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        }
+
+
+
+    </div>
+
+</div>
+@section scripts
+{
+
+    <script src="~/Content/DesignContent/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/Content/DesignContent/vendor/jPaginate/src/jQuery.paginate.js"></script>
+
+    
+}

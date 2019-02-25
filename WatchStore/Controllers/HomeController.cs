@@ -59,10 +59,14 @@ namespace WatchStore.Controllers
             }
         }
        
-        public ActionResult Galary()
+        public ActionResult Galary(string key)
         {
         ApplicationDbContext db = new ApplicationDbContext();
         var products = db.Products.Include(p => p.Brand);
+        if (key!="all")
+        {
+            products = products.Where(x => x.Brand.Name == key);
+        }
 
             return View(products.ToList());
         }
@@ -98,6 +102,29 @@ namespace WatchStore.Controllers
             var userId = User.Identity.GetUserId();
             ViewBag.cartNum = db.Orders.Where(x=>x.UserId==userId).Count();
             return PartialView();
+        }
+        public ActionResult Search(string searchProduct)
+        {
+            var products = GetProducts(searchProduct);
+            return PartialView(products);
+        }
+        private List<Products> GetProducts(string searchString)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            return db.Products.Include(p => p.Brand)
+                .Where(a => a.Brand.Name.Contains(searchString) || a.ProductName.Contains(searchString))
+                .ToList();
+        }
+
+        public ActionResult Filter(string hidLower, string hidUpper)
+        {
+            int lower=Int32.Parse(hidLower);
+            int upper=Int32.Parse(hidUpper);
+            ApplicationDbContext db = new ApplicationDbContext();
+            var products=db.Products.Include(p => p.Brand)
+                .Where(a => a.ProductPrice >=lower && a.ProductPrice <= upper)
+                .ToList();
+            return PartialView("Search", products);
         }
     }
 }

@@ -23,12 +23,22 @@
                         Search
                     </div>
                     <div class="search-product pos-relative bo4 of-hidden">
+                        @using (Ajax.BeginForm("Search", "Home",
+                            new AjaxOptions
+                            {
+                                InsertionMode = InsertionMode.Replace,
+                                HttpMethod = "GET",
+                                OnFailure = "searchFailed",
+                                LoadingElementId = "ajax-loader",
+                                UpdateTargetId = "SearchResult",
+                            }))
+                        {
+                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="searchProduct" placeholder="Search Products...">
 
-                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
-
-                        <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                        </button>
+                            <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        }
                     </div>
 
                     <!--  -->
@@ -44,15 +54,29 @@
                         </div>
 
                         <div class="flex-sb-m flex-w p-t-16">
+                            
                             <div class="w-size11">
-                                <!-- Button -->
-                                <button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-                                    Filter
-                                </button>
+                                @using (Ajax.BeginForm("Filter", "Home",
+                                    new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        HttpMethod = "GET",
+                                        OnFailure = "searchFailed",
+                                        LoadingElementId = "ajax-loader",
+                                        UpdateTargetId = "SearchResult",
+                                    }))
+                                {
+                                    <input type="hidden" name="hidLower" id="hidLower" value="1" />
+                                    <input type="hidden" name="hidUpper" id="hidUpper" value="2" />
+                                    <!-- Button -->
+                                    <button id="filterButton" class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+                                        Filter
+                                    </button>
+                                }
                             </div>
 
                             <div class="s-text3 p-t-10 p-b-10">
-                                Range: $<span id="value-lower">610</span> - $<span id="value-upper">980</span>
+                                Range: $<span id="value-lower"></span> - $<span id="value-upper"></span>
                             </div>
                         </div>
                     </div>
@@ -68,7 +92,7 @@
                 <div class="flex-sb-m flex-w p-b-35" style="margin-top: -53px;margin-left: -15px;">
                     <div class="flex-w">
                         <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                            <select class="selection-2"  name="sorting">
+                            <select class="selection-2" name="sorting">
                                 <option>Default Sorting</option>
                                 <option>Name</option>
                                 <option>Price: low to high</option>
@@ -79,11 +103,11 @@
 
                     </div>
 
-                   
+
                 </div>
 
                 <!-- Product -->
-                <div class="row">
+                <div class="row" id="SearchResult">
                     <div id="pagination-1" class="row pagination__list">
                         @foreach (var item in Model)
                         {
@@ -91,25 +115,25 @@
                             {
                                 <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                                     <!-- Block2 -->
-                                    <div class="block2 border" style="padding: 10px;">
+                                    <div class="block2 border" style="padding: 10px;min-width: 200px;">
                                         <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-                                           
-                                                <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
-                                            
-                                               
-                                                <div class="block2-overlay trans-0-4">
 
-                                                    <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
-                                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                                            <!-- Button -->
-                                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                                Add to Cart
-                                                            </button>
+                                            <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
-                                                        </div>
-                                                    
+
+                                            <div class="block2-overlay trans-0-4">
+
+                                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+                                                <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                    <!-- Button -->
+                                                    <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                        Add to Cart
+                                                    </button>
+
                                                 </div>
-                                                
+
+                                            </div>
+
                                         </div>
 
                                         <div class="block2-txt p-t-20">
@@ -140,11 +164,11 @@
                             {
                                 <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                                     <!-- Block2 -->
-                                    <div class="block2 border" style="padding: 10px;">
+                                    <div class="block2 border" style="padding: 10px;min-width: 200px;">
                                         <div class="block2-img wrap-pic-w of-hidden pos-relative">
 
                                             <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
-                                            
+
                                             <div class="block2-overlay trans-0-4">
                                                 <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
 
@@ -155,7 +179,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
 
                                         <div class="block2-txt p-t-20">
@@ -182,7 +206,7 @@
 
                     </div>
 
-                
+
                 </div>
             </div>
         </div>
@@ -204,19 +228,96 @@
             items_per_page: 3,
             prev_next: false
         });
+        $( "#searchresults" ).load( function() {
+            alert("done");
+        });
+        $('#pagination-2').paginate({
+            items_per_page: 3,
+            prev_next: false
+        });
+        function searchFailed() {
+            $("#searchresults").html("Sorry, there was a problem with the search.");
+        }
 
-       
-    </script>
-    <script type="text/javascript">
-        /*[ No ui ]
-	    ===========================================================*/
+        function cartClick(obj) {
+            //alert(obj);
+            var nameProduct = $(obj).parent().parent().parent().parent().find('.block2-name').html();
+            var id = $(obj).parent().parent().parent().parent().find('.block2-id').html();
+            var authorized = $(obj).parent().parent().parent().parent().find('.block2-auth').html();
+            if (authorized === "True") {
+
+                swal({
+                    title: "Are you sure?",
+                    text: "You want to add to cart",
+                    icon: "warning",
+                    buttons: {
+                        cancel: true,
+                        confirm: "Add"
+
+                    }
+                }).then(function (isConfirm) {
+                    if (isConfirm) {
+
+                        $.ajax({
+                            url: '/Order/AddOrder',
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            error: function () {
+                                swal("Failed", "Something went wrong", "error");
+                            }
+                        }).success(function () {
+                            swal("Added!", "Your item has been added.", "success");
+                            var count = parseInt($('.header-icons-noti').html());
+                            count += 1;
+                            $('.header-icons-noti').text(count);
+                        });
+
+
+                    } else {
+                        swal("Cancelled", "You cancel the item", "error");
+                    }
+                });
+
+                //swal(nameProduct + " and id is " + Id, "is added to cart !", "success");
+
+            } else {
+
+
+                swal({
+                    title: "Login",
+                    text: "You Must login first ",
+                    icon: "info",
+                    buttons: {
+
+                        confirm: "Login"
+
+                    }
+
+
+                }).then(function (isConfirm) {
+                    if (isConfirm) {
+                        location.href = "/Account/Login?ReturnUrl=%2FHome%2FGalary%2F?key=all";
+                    }
+
+                });
+                //function () {
+                //    ///Account/Login?ReturnUrl=%2FHome%2FGalary
+                //    //location.href = "/Account/Login?ReturnUrl=%2FHome%2FGalary";
+                //    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                //});
+
+            }
+
+        }
         var filterBar = document.getElementById('filter-bar');
 
         noUiSlider.create(filterBar, {
-            start: [ 10, 2000 ],
+            start: [5, 2000],
             connect: true,
             range: {
-                'min': 10,
+                'min': 5,
                 'max': 2000
             }
         });
@@ -226,10 +327,20 @@
             document.getElementById('value-upper')
         ];
 
-        filterBar.noUiSlider.on('update', function( values, handle ) {
-            skipValues[handle].innerHTML = Math.round(values[handle]) ;
+        filterBar.noUiSlider.on('update', function (values, handle) {
+            skipValues[handle].innerHTML = Math.round(values[handle]);
+        });
+        $('#filterButton').on('click', function () {
+            var lower = parseInt(document.getElementById('value-lower').innerHTML);
+            var upper = parseInt(document.getElementById('value-upper').innerHTML);
+            $('#hidLower').val(lower);
+            $('#hidUpper').val(upper);
+            $('#filterButton').submit();
+
+
         });
     </script>
+    
 }
 
 
