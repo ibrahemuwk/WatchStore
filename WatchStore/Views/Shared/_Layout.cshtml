@@ -382,7 +382,7 @@
 <!-- Container Selection -->
 <div id="dropDownSelect1"></div>
 <div id="dropDownSelect2"></div>
-
+<div id="dropDownSelect3"></div>
 
 
     <!--===============================================================================================-->
@@ -404,6 +404,10 @@
     $(".selection-2").select2({
         minimumResultsForSearch: 20,
         dropdownParent: $('#dropDownSelect2')
+    });
+    $(".selection-3").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect3')
     });
 </script>
     <!--===============================================================================================-->
@@ -518,10 +522,7 @@
 <script src="../../Content/DesignContent/js/main.js"></script>
 <script src="~/Content/DesignContent/vendor/jPaginate/src/jQuery.paginate.js"></script>
 <script>
-   
-    $('.selection-2').on('change', function() {
-        alert( $(this).find(":selected").val() );
-    });
+  
 </script>
     @RenderSection("scripts", required: false)
 </body>

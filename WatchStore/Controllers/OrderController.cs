@@ -27,12 +27,27 @@ namespace WatchStore.Controllers
 
         public JsonResult Remove(string id)
         {
+            if (id=="all")
+            {
+                var userId = User.Identity.GetUserId();
+                var items = db.Orders.Where(x => x.UserId == userId).ToList();
+                if (items.Count > 0)
+                {
+                    foreach (var order in items)
+                    {
+                        db.Orders.Remove(order);
+                    }
+                    db.SaveChanges();
+                }
+            }
+            else { 
             int itemId = Int32.Parse(id);
             var userId = User.Identity.GetUserId();
             var item = db.Orders.FirstOrDefault(x=>x.ProductId== itemId && x.UserId== userId);
             if (item != null) db.Orders.Remove(item);
             //_context.DoLists.SingleOrDefault(m => m.Id == itemId).IsCompleted = chk;
             db.SaveChanges();
+            }
             return Json("", JsonRequestBehavior.AllowGet);
         }
 

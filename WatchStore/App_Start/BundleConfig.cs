@@ -1,4 +1,8 @@
-﻿using System.Web;
+﻿using BundleTransformer.Core.Builders;
+using BundleTransformer.Core.Bundles;
+using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Resolvers;
+using System.Web;
 using System.Web.Optimization;
 
 namespace WatchStore
@@ -25,6 +29,11 @@ namespace WatchStore
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Bundle/sass").Include(
+                "~/Content/checkout.css"
+                ));
+            
         }
     }
 }
