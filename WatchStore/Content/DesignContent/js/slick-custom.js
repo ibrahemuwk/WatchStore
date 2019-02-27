@@ -29,7 +29,7 @@
 
             action2[0] = setTimeout(function(){
                 $(cap2Slide1[0]).addClass($(cap2Slide1[0]).data('appear') + ' visible-true');
-            },1000);
+            },1200);
 
             action3[0] = setTimeout(function(){
                 $(btnSlide1[0]).addClass($(btnSlide1)[0].data('appear') + ' visible-true');
@@ -73,7 +73,7 @@
 
             action2[currentSlide] = setTimeout(function(){
                 $(cap2Slide1[currentSlide]).addClass($(cap2Slide1[currentSlide]).data('appear') + ' visible-true');
-            },1000);
+            },800);
 
             action3[currentSlide] = setTimeout(function(){
                 $(btnSlide1[currentSlide]).addClass($(btnSlide1)[currentSlide].data('appear') + ' visible-true');
@@ -89,7 +89,7 @@
             slidesToScroll: 4,
             infinite: true,
             autoplay: false,
-            autoplaySpeed: 6000,
+            autoplaySpeed: 1000,
             arrows: true,
             appendArrows: $('.wrap-slick2'),
             prevArrow:'<button class="arrow-slick2 prev-slick2"><i class="fa  fa-angle-left" aria-hidden="true"></i></button>',

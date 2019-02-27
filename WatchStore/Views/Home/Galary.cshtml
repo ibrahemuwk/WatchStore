@@ -90,7 +90,7 @@
             <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                 <!--  -->
                 <div class="flex-sb-m flex-w p-b-35" style="margin-top: -53px;margin-left: -15px;">
-                    <div class="flex-w">
+                    @*<div class="flex-w">
                         <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                             <select class="selection-2" name="sorting">
                                 <option>Default Sorting</option>
@@ -101,14 +101,14 @@
                         </div>
 
 
-                    </div>
+                    </div>*@
 
 
                 </div>
 
                 <!-- Product -->
                 <div class="row" id="SearchResult">
-                    <div id="pagination-1" class="row pagination__list">
+                    <div style="    margin-right: auto;margin-left: auto;" id="pagination-1" class="row pagination__list">
                         @foreach (var item in Model)
                         {
                             if (item.ProductSale > 0)
@@ -123,7 +123,7 @@
 
                                             <div class="block2-overlay trans-0-4">
 
-                                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+                                                 <a href="/Home/ProductDetail/@item.ProductId"><i class="fa fa-info-circle" style="float: right;margin: 10px;font-size: xx-large;"></i></a>
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                                     <!-- Button -->
                                                     <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -170,7 +170,7 @@
                                             <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
                                             <div class="block2-overlay trans-0-4">
-                                                <span class="btn btn-dark" style="float: right;margin: 10px;border-radius: 20px;text-decoration: none;text-decoration-color: none"> <a href="/Home/ProductDetail/@item.ProductId">Details</a></span>
+                                                <a href="/Home/ProductDetail/@item.ProductId"><i class="fa fa-info-circle" style="float: right;margin: 10px;font-size: xx-large;"></i></a>
 
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                                     <!-- Button -->

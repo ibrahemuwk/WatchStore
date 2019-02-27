@@ -18,23 +18,19 @@
             /**/
             <div id="orders" class="container-table-cart pos-relative">
                 <div class="wrap-table-shopping-cart bgwhite">
-                    <table class="table-shopping-cart">
-                        <tr class="table-head ">
-                            <th style="text-align: center;" class="column-1"></th>
-                            <th style="text-align: center;" class="column-2">Product</th>
-                            <th style="text-align: center;" class="column-3">Price</th>
-
-                        </tr>
+                    <table class="table-shopping-cart" >
+                      
+                        <tbody id="pagination-3" class="pagination__list" >
                         @{ double total = 0;}
                         @foreach (var item in Model)
                         {
-                            <tr class="table-row text-center">
+                            <tr style="    border: 1px solid #e6e6e6;" class="table-row text-center pagination__item">
                                 <td class="column-1">
                                     <div class="cart-img-product b-rad-4 o-f-hidden">
                                         <img src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
                                     </div>
                                 </td>
-                                <td class="column-2">@item.ProductName</td>
+                                <td class="column-2 font-weight-bold ">@item.ProductName</td>
                                 <td class="column-3">
                                     @if (item.ProductSale > 0)
                                     {
@@ -69,18 +65,19 @@
                                 <td class="column-4 tools"><i onclick="remove(this,@item.ProductId)" class="fa fa-trash-o"></i></td>
                             </tr>
                         }
-
+                        </tbody>
                     </table>
                 </div>
             </div>
-
-            <div class="row" style="margin: 0px;">
+            <br/>
+            <br/>
+            <div class="row" style="">
 
 
 
 
                 <!-- Total -->
-                <div  id="shipping" style="max-width: 580px;" class="col-md-6 bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+                <div id="shipping" style="max-width: 580px;margin-right: 15px;" class="col-md-6 bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
                     <h5 class="m-text20 p-b-24">
                         Cart Totals
                     </h5>
@@ -116,7 +113,7 @@
                             </span>
 
                             <div class="rs2-select2 rs3-select2 rs4-select2 bo4 of-hidden w-size21 m-t-8 m-b-12">
-                                <select class="selection-2" id="governates" name="country">
+                                <select class="selection-2" onchange="change(this)" id="governates" name="country">
                                     <option value="def">Select a country...</option>
                                     <option value="50">القاهرة </option>
                                     <option value="50">الجيزة </option>
@@ -183,8 +180,8 @@
                 </div>
 
 
-                <div hidden id="visa" style="max-width: 590px;" class="col-md-6 bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
-                    <div class="checkout">
+                <div hidden id="visa" style="max-width: 590px;width:-webkit-fill-available;margin-right: 15px;" class="col-md-6 bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+                    <div class="checkout" style="margin-top: inherit;">
                         <div class="credit-card-box">
                             <div class="flip">
                                 <div class="front">
@@ -263,7 +260,7 @@
                             </fieldset>
                             <fieldset class="fieldset-expiration">
                                 <label for="card-expiration-month">Expiration date</label>
-                                <div >
+                                <div>
                                     <select class=" sel" id="card-expiration-month">
                                         <option></option>
                                         <option>01</option>
@@ -280,7 +277,7 @@
                                         <option>12</option>
                                     </select>
                                 </div>
-                                <div >
+                                <div>
                                     <select class=" sel" id="card-expiration-year">
                                         <option></option>
                                         <option>2019</option>
@@ -313,6 +310,9 @@
 
 @section scripts
 {
+    <script src="~/Content/DesignContent/vendor/jquery/jquery.min.js"></script>
+
+    <script src="~/Content/DesignContent/vendor/jPaginate/src/jQuery.paginate.js"></script>
     <script>
         $('#ProceedToCheckout').on('click', function () {
             if ($('#governates').find(":selected").val() === 'def') {
@@ -338,18 +338,21 @@
             }
 
         });
-        $('.selection-2').on('change',
-            function () {
-                if ($(this).find(":selected").val() === 'def') {
+      
+            function change(obj) {
+               
+                if ($(obj).find(":selected").val() === 'def') {
                     $('#finalTotal').text('00.00');
                 } else {
 
                     var total = $('#total').text();
-                    var finalTotal = parseFloat(total) + parseFloat($(this).find(":selected").val());
+                    var finalTotal = parseFloat(total) + parseFloat($(obj).find(":selected").val());
                     $('#finalTotal').text(finalTotal);
+                  
                 }
+                
 
-            });
+            }
 
         function remove(td, id) {
 
@@ -364,7 +367,7 @@
                 }
             }).then(function (isConfirm) {
                 if (isConfirm) {
-                    
+
                     $.ajax({
                         url: '/Order/Remove',
                         type: "POST",
@@ -380,8 +383,11 @@
                             var price = parseFloat($(td).parent().parent().find('.price-item').text());
                             var total = $('#total').text();
                             total -= price;
-                            $('#total').text(total);
-                            $(td).parent().parent().fadeOut(1000);
+                            $('#total').text(total); 
+                            $(td).parent().parent().hide(2000);
+                            $(td).parent().parent().css("border", "none", "important");
+
+                            $(td).parent().parent().find('td').css("display", "none", "important");
                             var count = parseInt($('.header-icons-noti').html());
                             count -= 1;
                             $('.header-icons-noti').text(count);
@@ -397,12 +403,12 @@
             //swal(nameProduct + " and id is " + Id, "is added to cart !", "success");
 
         }
-        
+
         $('#sub').on('click', function (event) {
-            
-        
-            if ($('.credit-card-box .number').html().length == 20 && $('.credit-card-box .card-holder div').html().length > 2 && $('.card-expiration-date div').html().length >= 5 && $('.ccv div').html().length == 3 ) {
-               
+
+
+            if ($('.credit-card-box .number').html().length == 20 && $('.credit-card-box .card-holder div').html().length > 2 && $('.card-expiration-date div').html().length >= 5 && $('.ccv div').html().length == 3) {
+
                 $.ajax({
                     url: '/Order/Remove',
                     type: "POST",
@@ -416,15 +422,15 @@
                         $('#orders').fadeOut(1000);
                         swal("Buy Completed", "Your item in his way.", "success");
 
-                       
-                       
+
+
                         $('#total').text('00.00');
-                       
-                       
+
+
                         $('.header-icons-noti').text('0');
                     }
                 });
-            } 
+            }
             event.preventDefault();
         });
 
@@ -471,22 +477,30 @@
             $('.ccv div').html($(this).val());
         });
 
-/*function getCreditCardType(accountNumber) {
-          if (/^5[1-5]/.test(accountNumber)) {
-            result = 'mastercard';
-          } else if (/^4/.test(accountNumber)) {
-            result = 'visa';
-          } else if ( /^(5018|5020|5038|6304|6759|676[1-3])/.test(accountNumber)) {
-            result = 'maestro';
-          } else {
-            result = 'unknown'
-          }
-          return result;
-}
+        /*function getCreditCardType(accountNumber) {
+                  if (/^5[1-5]/.test(accountNumber)) {
+                    result = 'mastercard';
+                  } else if (/^4/.test(accountNumber)) {
+                    result = 'visa';
+                  } else if ( /^(5018|5020|5038|6304|6759|676[1-3])/.test(accountNumber)) {
+                    result = 'maestro';
+                  } else {
+                    result = 'unknown'
+                  }
+                  return result;
+        }
 
-$('#card-number').change(function(){
-          console.log(getCreditCardType($(this).val()));
-})*/
+        $('#card-number').change(function(){
+                  console.log(getCreditCardType($(this).val()));
+        })*/
+
+
+
+        $('#pagination-3').paginate({
+            items_per_page: 2,
+            prev_next: false,
+          
+        });
     </script>
 }
 

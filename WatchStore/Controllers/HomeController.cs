@@ -15,7 +15,9 @@ namespace WatchStore.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var db=new ApplicationDbContext();
+            var RandomItems = db.Products.Include(x=>x.Brand).OrderBy(r => Guid.NewGuid()).Take(8).ToList();
+            return View(RandomItems);
         }
 
         public ActionResult About()

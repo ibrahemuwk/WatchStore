@@ -2353,3 +2353,37 @@ input.num-product::-webkit-inner-spin-button {
 }
 
     .display-name { display: none }
+.checkout {
+    transform: scale(0.8);
+  
+}
+
+@media (max-width: 620px) {
+    #visa {
+        margin-left: 15px;
+    }
+
+    #shipping {
+        margin-left: 15px;
+    }
+}
+@media (max-width: 470px) {
+    #visa {
+        margin-left: 15px;
+    }
+
+    .checkout {
+        margin-left: -58px;
+    }
+}
+.table-shopping-cart .pagination__controls{
+    bottom: auto;
+    margin-left: 0;
+}
+@media (min-width: 993px) {
+    #space {
+        margin-top: 80px
+    }
+}
+
+    

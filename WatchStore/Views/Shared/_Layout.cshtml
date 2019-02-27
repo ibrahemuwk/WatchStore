@@ -38,6 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/css/util.css">
     <link rel="stylesheet" type="text/css" href="../../Content/DesignContent/css/main.css">
     <style>
+        .btn-primary {
+            background-color: #007bff1a;
+        }
         .sticky {
             position: fixed;
             top: 0;
@@ -45,7 +48,7 @@
         }
         .pagination__controls {
             margin-right: -6px;
-            margin-left: 10px;
+            margin-left:15px; 
             position: absolute;
             bottom: 0;
         }
@@ -67,6 +70,15 @@
             -ms-align-items: center;
             align-items: center;
         }
+            .pagination__controls li:first-child {
+                border-bottom-left-radius: 0 !important;
+                border-top-left-radius: 0 !important;
+            }
+            .pagination__controls li:last-child {
+                border-bottom-right-radius: 0 !important;
+                border-top-right-radius: 0 !important;
+            }
+            
             .pagination__controls li:hover {
                 background-color: #007bffad;
                 color: white;
@@ -76,6 +88,7 @@
                 color: white;
             }
 
+    
     </style>
     <!--===============================================================================================-->
 </head>
@@ -221,7 +234,7 @@
             </nav>
         </div>
     </header>
-    <div style="margin-top: 80px"></div>
+    <div id="space" style=""></div>
     @RenderBody()
 
     <!-- Footer -->
