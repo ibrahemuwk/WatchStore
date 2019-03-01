@@ -2689,6 +2689,7 @@
     <Content Include="Content\DesignContent\images\icons\video-16-9.jpg" />
     <Content Include="Content\DesignContent\images\icons\visa.png" />
     <Content Include="Content\DesignContent\images\luxury-watches.png" />
+    <Content Include="Content\DesignContent\images\master-slide-02.jpg" />
     <Content Include="Content\DesignContent\images\master-slide-03.jpg" />
     <Content Include="Content\DesignContent\images\master-slide-04.jpg" />
     <Content Include="Content\DesignContent\images\master-slide-05.jpg" />
@@ -2909,6 +2910,7 @@
     <Content Include="Content\DesignContent\vendor\slick\slick.less" />
     <Content Include="Content\DesignContent\vendor\slick\slick.scss" />
     <Content Include="Content\checkout.css" />
+    <None Include="Properties\PublishProfiles\Watchman - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

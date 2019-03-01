@@ -20,7 +20,7 @@ namespace WatchStore
             var context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            //var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             //userManager.AddToRole("63a3e1ca-75a8-4788-9499-07e56ba6ee01", "Admin");
             //63a3e1ca-75a8-4788-9499-07e56ba6ee01;
 
@@ -34,8 +34,26 @@ namespace WatchStore
                     Name = "Admin"
                 };
                 roleManager.Create(role);
+                var user = new ApplicationUser
+                {
+                    UserName = "admin@gmail.com",
+                    Email = "admin@gmail.com",
+                    FirstName = "Ibrahim",
+                    LastName = "Ismail"
 
-                
+                };
+
+                string userPWD = "hemavic";
+
+                var chkUser = userManager.Create(user, userPWD);
+
+                //Add default User to Role Admin    
+                if (chkUser.Succeeded)
+                {
+                    var result1 = userManager.AddToRole(user.Id, "Admin");
+
+                }
+
             }
 
             // creating Creating Manager role     

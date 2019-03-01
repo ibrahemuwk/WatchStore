@@ -12,7 +12,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                         <!-- Button -->
-                        <a href="/Home/Galary/all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="/Home/Galary/?key=all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -29,7 +29,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                         <!-- Button -->
-                        <a href="/Home/Galary/all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="/Home/Galary/?key=all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -46,7 +46,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                         <!-- Button -->
-                        <a href="/Home/Galary/all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="/Home/Galary/?key=all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -63,7 +63,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                         <!-- Button -->
-                        <a href="/Home/Galary/all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="/Home/Galary/?key=all" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -110,7 +110,7 @@
                     <img src="~/Content/Img/samsung.png" alt="IMG-BENNER"/>
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="/Home/Galary/?key=Samsong" class="flex-c-m size2  btn btn-primary  trans-0-4">
+                        <a href="/Home/Galary/?key=Samsung" class="flex-c-m size2  btn btn-primary  trans-0-4">
                             SAMSUNG
                         </a>
                     </div>
@@ -146,7 +146,7 @@
                     <img src="~/Content/Img/cartier.png" alt="IMG-BENNER"/>
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
-                        <a href="/Home/Galary/?key=Cartier" class="flex-c-m size2  btn btn-primary  trans-0-4">
+                        <a href="/Home/Galary/?key=Cartiar" class="flex-c-m size2  btn btn-primary  trans-0-4">
                             CARTIAR
                         </a>
                     </div>
@@ -176,9 +176,9 @@
                         <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                             <!-- Block2 -->
                             <div class="block2 border" style="padding: 10px;min-width: 200px;">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale hov-img-zoom">
 
-                                    <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+                                    <img class="imaProduct" style="height: 200px;width: auto;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
 
                                     <div class="block2-overlay trans-0-4">
@@ -225,9 +225,9 @@
                         <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                             <!-- Block2 -->
                             <div class="block2 border" style="padding: 10px;min-width: 200px;">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                <div class="block2-img wrap-pic-w of-hidden pos-relative hov-img-zoom">
 
-                                    <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+                                    <img class="imaProduct" style="height: 200px;width: auto;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <a href="/Home/ProductDetail/@item.ProductId"><i class="fa fa-info-circle" style="float: right;margin: 10px;font-size: xx-large;"></i></a>
@@ -278,9 +278,11 @@
     <div class="flex-w p-l-15 p-r-15">
         <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
             <h4 class="m-text12 t-center">
-                Products Have Two Years Full Warranty
+               Warranty
             </h4>
-
+            <span class="s-text11 t-center">
+                Products Have Two Years Full Warranty
+            </span>
             
         </div>
 

@@ -107,8 +107,8 @@
                 </div>
 
                 <!-- Product -->
-                <div class="row" id="SearchResult">
-                    <div style="    margin-right: auto;margin-left: auto;" id="pagination-1" class="row pagination__list">
+                <div class="row" style="    flex-wrap: inherit;" id="SearchResult">
+                    <div style="    margin-right: auto;" id="pagination-1" class="row pagination__list">
                         @foreach (var item in Model)
                         {
                             if (item.ProductSale > 0)
@@ -116,9 +116,9 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                                     <!-- Block2 -->
                                     <div class="block2 border" style="padding: 10px;min-width: 200px;">
-                                        <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
+                                        <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale  hov-img-zoom">
 
-                                            <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+                                            <img class="imaProduct" style="height: 200px;width: auto;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
 
                                             <div class="block2-overlay trans-0-4">
@@ -165,9 +165,9 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4 p-b-50 pagination__item">
                                     <!-- Block2 -->
                                     <div class="block2 border" style="padding: 10px;min-width: 200px;">
-                                        <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                        <div class="block2-img wrap-pic-w of-hidden pos-relative  hov-img-zoom">
 
-                                            <img class="imaProduct" style="height: 200px;width: 100%;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
+                                            <img class="imaProduct" style="height: 200px;width: auto;display: block;margin: auto;" src="@Url.Action("UserPhotos", "Home", new {id = item.ProductId})" alt="IMG-PRODUCT">
 
                                             <div class="block2-overlay trans-0-4">
                                                 <a href="/Home/ProductDetail/@item.ProductId"><i class="fa fa-info-circle" style="float: right;margin: 10px;font-size: xx-large;"></i></a>
@@ -225,14 +225,14 @@
 
     <script>
         $('#pagination-1').paginate({
-            items_per_page: 3,
+            items_per_page: 8,
             prev_next: false
         });
         $( "#searchresults" ).load( function() {
             alert("done");
         });
         $('#pagination-2').paginate({
-            items_per_page: 3,
+            items_per_page: 8,
             prev_next: false
         });
         function searchFailed() {

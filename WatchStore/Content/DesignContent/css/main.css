@@ -1675,7 +1675,7 @@ li.sale-noti > a {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.3);
+  
   opacity: 0;
 }
 
@@ -2386,4 +2386,16 @@ input.num-product::-webkit-inner-spin-button {
     }
 }
 
+@media (min-width: 992px) {
+    .col-lg-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: none;
+    }
+}
+
+.pagination__item {
     
+}
+.row{
+}
