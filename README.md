@@ -1,4 +1,4 @@
-# WatchStore
+# WatchStore  https://watchman.azurewebsites.net
 # Is an online store for men watches 
 In this application there is two roles
   1- Admin
